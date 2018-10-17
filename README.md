@@ -1,3 +1,4 @@
+# http: https://github.com/superfff/vue-router-spa.git
 # vue2.*  (router)
 
  @[vue2.3.3|webpack2.6.1|vue-router2.3.1|less|axios]
