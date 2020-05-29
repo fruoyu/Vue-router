@@ -1,7 +1,7 @@
 <template>
 	<div class="b">
 		<p class="red">THIS IS B</p>
-		<p class="arrow"></p>
+		<p class="arrow">{{Object.keys(this.$route.query).length ? this.$route.query.userId : ''}}</p>
 	</div>
 </template>
 
