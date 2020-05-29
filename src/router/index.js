@@ -67,6 +67,13 @@ export default new Router({
       ]
     },
     {
+      path: '/echartsMap',
+      name: 'EchartsMap',
+      component: resolve => {
+        require(['pages/echartsMap'], resolve)
+      }
+    },
+    {
       path: '/404',
       name: '404',
       component: resolve => {
