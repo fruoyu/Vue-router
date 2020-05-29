@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-// 页面
-import container from 'components/container';
 //a页面
 import a from 'pages/a'
 //b页面
@@ -28,7 +26,7 @@ routes中也有钩子函数, beforeRouteEnter/beforeRouteUpdate/beforeRouteLeave
 https://router.vuejs.org/zh-cn/advanced/navigation-guards.html
 
 3.
-在路由的集合中使用meta 
+在路由的集合中使用meta
 可以带上信息在 this.$router 进行操作
 https://router.vuejs.org/zh-cn/advanced/meta.html
 
@@ -37,24 +35,49 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: container,
+      name: 'Container',
+      // redirect: '/a',
+      component: resolve => {
+        require(['components/container'], resolve)
+      },
       children: [
-      	{
-			path: '/',
-			component: a,
-			meta: {auth: false}
-		},
-		{
-			path: '/b',
-			component: b,
-			// alias: '/c'
-		},
-		{
-			path: '/c',
-			component: c
-		},
-
+          {
+            path: '/',
+            name: 'A',
+            component: resolve => {
+            require(['pages/a'], resolve)
+          },
+            meta: {auth: false}
+          },
+        {
+          path: '/b',
+          name: 'B',
+          component: resolve => {
+            require(['pages/b'], resolve)
+          },
+          // alias: '/c'
+        },
+        {
+          path: '/c',
+          name: 'C',
+          component: resolve => {
+            require(['pages/c'], resolve)
+          },
+        },
       ]
+    },
+    {
+      path: '/404',
+      name: '404',
+      component: resolve => {
+        require (['pages/404'], resolve)
+      },
+      hidden: true
+    },
+    {
+      path: '*',
+      redirect: '/404',
+      hidden: true
     }
   ]
 })

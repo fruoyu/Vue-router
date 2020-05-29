@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store'
 
 //项目配置项
 import 'assets/js/conf';
@@ -17,6 +18,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })
@@ -31,7 +33,7 @@ router.beforeEach((to, from, next) => {
 	from  当前的路由信息
 	next  function
 	*/
-	
+
 	//可以结合路由信息中 meta项判断路由跳转拦截
 
 	next();

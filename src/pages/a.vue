@@ -27,7 +27,7 @@ export default {
 			common.a();
 		},
 		bbbb(){
-			this.$axios.get('http://www.baidu.com')
+			this.$axios.get('/getinfo')
 			.then((res) => {
 				console.log(res);
 			})

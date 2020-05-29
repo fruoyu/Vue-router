@@ -50,7 +50,10 @@ module.exports = {
         //       '^/*': '/*'
         //     }
         // }
-
+      '/getinfo': {
+        target: 'https://blackhole.m.jd.com',
+        changeOrigin: true,
+      }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
